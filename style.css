@@ -47,7 +47,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    right: 140px;
     padding: 18px 40px;
     display: flex;
     justify-content: flex-end;
