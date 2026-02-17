@@ -17,10 +17,16 @@
 body {
     font-family: 'Inter', sans-serif;
     color: var(--muted-text);
-    background: red;
+    background-image: url("images/hackabulllanding.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-}
+
+
+
 
 /* ---------- TOP BAR ---------- */
 
@@ -154,7 +160,8 @@ body {
 }
 
 
-.hero::before 
+.hero::before {
+}
 
 
 .hero-content {
