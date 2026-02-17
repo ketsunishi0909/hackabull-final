@@ -19,11 +19,9 @@ body {
     padding: 0;
     background: url("images/hackbulllanding.png") no-repeat center center fixed;
     background-size: cover;
+    font-family: 'Inter', sans-serif;
+    color: var(--muted-text);
 }
-
-
-
-
 
 /* ---------- TOP BAR ---------- */
 
@@ -37,43 +35,6 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 10;
-}
-
-.socials {
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-}
-
-.socials a {
-    margin-right: 8px;
-    transition: transform 0.18s, opacity 0.18s;
-}
-
-.socials a:hover {
-    transform: scale(1.2);
-    color: var(--neon-green);
-}
-
-.social-icon {
-    width: 28px;
-    height: 28px;
-    display: inline-block;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 14px rgba(57,255,20,0.08));
-    transition: transform 0.18s ease, filter 0.18s ease, opacity 0.18s ease;
-}
-.socials a:hover .social-icon {
-    transform: scale(1.18);
-    filter: drop-shadow(0 0 10px rgba(57,255,20,0.72));
-    opacity: 0.98;
-}
-
-@media (max-width: 420px) {
-    .social-icon { width: 24px; height: 24px; }
 }
 
 /* NAV PILL */
@@ -105,12 +66,6 @@ body {
 }
 
 /* MLH */
-.mlh img {
-    width: auto;
-    border-radius: 6px;
-}
-
-/* Allow MLH badge to overflow and overlap top area but keep it vertically centered */
 .mlh {
     position: absolute;
     right: 12px;
@@ -120,7 +75,6 @@ body {
     overflow: visible;
 }
 .mlh img {
-    /* pin badge near the very top of the viewport */
     width: auto;
     max-width: 160px;
     max-height: 120px;
@@ -156,140 +110,12 @@ body {
     justify-content: center;
 }
 
-
-.hero::before {
-}
-
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-    /* no background panel (transparent) */
-    background: transparent;
-    padding: 22px 30px;
-    border-radius: 0;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    box-shadow: none;
-    max-width: 95%;
-}
-
-.hero-content h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 80px;
-    font-weight: 700;
-    letter-spacing: 6px;
-    /* neon gradient fill */
-    background: linear-gradient(90deg, rgba(57,255,20,1), rgba(182,255,184,0.95), rgba(0,240,255,0.95));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    position: relative;
-    /* heavy neon glow layers */
-    text-shadow:
-        0 0 6px rgba(57,255,20,0.95),
-        0 0 18px rgba(57,255,20,0.85),
-        0 0 36px rgba(0,240,255,0.65),
-        0 8px 40px rgba(0,0,0,0.6);
-    animation: neonFlicker 3s infinite ease-in-out;
-}
-
-/* reduce the line box around the heading so image sits tighter to following content */
-.hero-content h1 { line-height: 1; }
-
-.hero-content span {
-    color: var(--neon-cyan);
-}
-
-/* Logo image used in the hero instead of text */
-.hero-content .site-logo {
-    /* smaller, balanced logo sizes to avoid overwhelming the hero */
-    max-height: 160px;
-    max-width: 56vw;
-    width: auto;
-    display: block;
-    margin: 0 auto 12px;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 14px rgba(57,255,20,0.10));
-}
-
-@media (min-width: 1600px) {
-    .hero-content .site-logo { max-height: 200px; max-width: 48vw; }
-}
-@media (max-width: 1440px) {
-    .hero-content .site-logo { max-height: 180px; max-width: 58vw; }
-}
-@media (max-width: 1024px) {
-    .hero-content .site-logo { max-height: 140px; max-width: 72vw; }
-}
-@media (max-width: 768px) {
-    .hero-content .site-logo { max-height: 110px; max-width: 86vw; }
-}
-@media (max-width: 420px) {
-    .hero-content .site-logo { max-height: 80px; max-width: 92vw; }
-}
-
-/* soft halo behind the heading to enhance neon effect */
-.hero-content h1::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 140%;
-    height: 60%;
-    background: radial-gradient(closest-side, rgba(57,255,20,0.14), transparent 40%);
-    filter: blur(20px);
-    z-index: -1;
-}
-
-@keyframes neonFlicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; text-shadow: 0 0 6px rgba(57,255,20,0.95), 0 0 18px rgba(57,255,20,0.85), 0 0 36px rgba(0,240,255,0.65); }
-    20%, 24%, 55% { opacity: 0.85; text-shadow: 0 0 4px rgba(57,255,20,0.6), 0 0 12px rgba(57,255,20,0.45), 0 0 20px rgba(0,240,255,0.35); }
-}
-
-.hero-content h2 {
-    margin-top: 10px;
-    font-size: 26px;
-    letter-spacing: 2px;
-}
-
 /* GLOW EFFECT */
 .glow {
     text-shadow:
         0 0 6px rgba(57,255,20,0.95),
         0 0 18px rgba(0,240,255,0.65),
         0 0 36px rgba(110,242,184,0.45);
-}
-
-/* COUNTDOWN */
-#countdown {
-    margin: 30px 0;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
-
-#countdown div {
-    background: rgba(10,6,20,0.32);
-    padding: 15px 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,240,255,0.06);
-    box-shadow: 0 8px 30px rgba(57,255,20,0.03), 0 0 18px rgba(0,240,255,0.02);
-}
-
-#countdown span {
-    font-size: 30px;
-    font-weight: bold;
-    display: block;
-}
-
-/* Countdown numbers: bright yellow */
-#countdown span { color: #FFEC4E; text-shadow: 0 0 10px rgba(255,236,78,0.35); }
-
-#countdown small {
-    font-size: 12px;
-    opacity: 0.7;
 }
 
 /* BUTTON */
@@ -310,30 +136,9 @@ button:hover {
     box-shadow: 0 6px 30px rgba(110,242,184,0.10), 0 0 18px rgba(0,240,255,0.06);
 }
 
-/* FADE-IN ANIMATION */
-.fade-in {
-    animation: fadeIn 1.5s ease forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* MOBILE */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 45px;
-    }
-
     .nav-pill {
-        /* keep nav visible on phones: compact layout but single-line */
         display: flex;
         flex-wrap: nowrap;
         gap: 8px;
@@ -343,16 +148,12 @@ button:hover {
         justify-content: center;
         overflow: hidden;
     }
-
-    #countdown {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
 }
 
 /* ---------- ABOUT ---------- */
 .about {
     padding: 80px 20px;
+    background: rgba(3, 4, 11, 0.85);
 }
 .about-inner {
     max-width: 1100px;
@@ -379,21 +180,16 @@ button:hover {
 .about-card {
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
     border-radius: 10px;
+    padding: 30px 20px;
     overflow: hidden;
     border: 1px solid rgba(57,255,20,0.06);
     box-shadow: 0 12px 40px rgba(57,255,20,0.02), inset 0 0 40px rgba(0,240,255,0.01);
-}
-.about-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-    transition: opacity 0.6s ease;
 }
 
 /* ---------- TRACKS ---------- */
 .tracks {
     padding: 60px 20px 100px;
+    background: rgba(3, 4, 11, 0.85);
 }
 .tracks-inner {
     max-width: 1100px;
@@ -429,50 +225,10 @@ button:hover {
     color: var(--muted-text);
 }
 
-/* ---------- SPONSORS ---------- */
-.sponsors {
-    padding: 60px 20px 100px;
-}
-.sponsors-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-}
-.sponsors-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 22px;
-    align-items: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.sponsor-card {
-    background: rgba(10,6,20,0.24);
-    padding: 18px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(57,255,20,0.04);
-}
-.sponsor-card img { max-width: 100%; height: 64px; object-fit: contain; display: block; }
-
-@media (max-width: 768px) {
-    .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 420px) {
-    .sponsors-grid { grid-template-columns: 1fr; }
-}
-
 /* Responsive: stack about images and tracks on small screens */
 @media (max-width: 768px) {
     .about-grid {
         grid-template-columns: 1fr;
-    }
-    .about-card img {
-        height: 200px;
     }
     .tracks-row {
         flex-direction: column;
@@ -485,50 +241,31 @@ button:hover {
 
 /* small-screen tweaks */
 @media (max-width: 420px) {
-    .hero-content h1 { font-size: 36px; }
     .track-num { font-size: 40px; }
 }
 
 /* Extra small / phone tweaks to keep layout cohesive */
 @media (max-width: 480px) {
-    .hero-content h1 { font-size: 34px; letter-spacing: 2px; }
-    .hero-content h2 { font-size: 18px; }
-
-    /* Countdown: keep on one line by reducing sizes and gaps */
-    #countdown { gap: 12px; margin: 18px 0; }
-    #countdown div { padding: 10px 12px; border-radius: 10px; }
-    #countdown span { font-size: 20px; }
-    #countdown small { font-size: 11px; }
-
-    /* MLH badge smaller and non-overflowing */
     .mlh { right: 16px; top: 6px; }
     .mlh img { height: 64px; transform: none; top: -4px; }
 
-    /* Sponsors & About: try 2 columns on small phones to preserve layout */
-    .sponsors-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .about-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .about-card img { height: 160px; }
 
-    /* Tracks: reduce numbers so they fit horizontally when possible */
     .tracks-row { gap: 12px; }
     .track-num { font-size: 44px; }
 
-    /* Nav pill: reduce padding so it fits centered */
     .nav-pill { padding: 6px 10px; gap: 8px; font-size: 12px; }
 }
 
 @media (max-width: 360px) {
-    .hero-content h1 { font-size: 30px; }
-    .hero-content h2 { font-size: 16px; }
     .mlh img { height: 56px; }
-    .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
     .about-grid { grid-template-columns: 1fr; }
-    #countdown span { font-size: 18px; }
 }
 
 /* ---------- FAQ ---------- */
 .faq {
     padding: 60px 20px 120px;
+    background: rgba(3, 4, 11, 0.85);
 }
 .faq-inner {
     max-width: 900px;
@@ -536,7 +273,6 @@ button:hover {
     padding: 0 20px;
     text-align: center;
 }
-/* center the section title specifically for FAQ */
 .faq .section-title { text-align: center; margin-left: 0; margin-right: 0; }
 .faq-list { display: grid; gap: 14px; width: 100%; max-width: 760px; margin: 0 auto; }
 .faq-item { background: rgba(10,6,20,0.28); border-radius: 10px; overflow: hidden; border: 1px solid rgba(57,255,20,0.04); width: 100%; }
@@ -573,7 +309,6 @@ button:hover {
     padding: 12px 18px 18px 18px;
 }
 
-/* Focus and hover improvements */
 .faq-question:hover { background: linear-gradient(90deg, rgba(57,255,20,0.035), rgba(0,240,255,0.03)); }
 .faq-question:focus { outline: none; box-shadow: 0 0 0 4px rgba(57,255,20,0.06); }
 
