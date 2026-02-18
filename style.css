@@ -215,9 +215,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("images/hackbulllanding.png") no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
+    overflow: hidden; /* add this */
+    /* remove the background: url(...) lines */
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 0;
 }
 
 /* GLOW EFFECT */
