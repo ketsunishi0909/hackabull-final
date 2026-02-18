@@ -261,7 +261,7 @@ button:hover {
 .about-inner {
     max-width: 600px;
     margin: 0 80px 0 auto; /* pushes block to the right */
-    text-align: left; /* aligns text left within the block */
+    text-align: center; /* aligns text left within the block */
     padding: 0 20px;
     position: relative;
     z-index: 1;
