@@ -13,16 +13,20 @@
     --neon-purple: #6ef2b8;
     --glass: rgba(255,255,255,0.03);
 }
-/* body */
+
 body {
+    margin: 0;
+    padding: 0;
     background-image: url('images/imagebackgroundhackabull.png');
-    background-size: 100% auto;          /* ← stretches full width, natural height */
+    background-size: 100% auto;           /* full width, natural height — scrolls with page */
     background-position: top center;
-    background-repeat: no-repeat;        /* keep this so it doesn't tile */
-    /* remove background-attachment: fixed entirely */
-    background-color: #0a0008;           /* fallback once image ends */
-    ...
+    background-repeat: no-repeat;
+    background-color: #0a0008;            /* fallback once image ends */
+    font-family: 'Inter', sans-serif;
+    color: var(--muted-text);
+    min-height: 100vh;
 }
+
 /* ---------- TOP BAR ---------- */
 .top-bar {
     position: fixed;
@@ -79,7 +83,7 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: all 0.35s ease;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
                  0 0 30px rgba(255, 255, 255, 0.5);
     font-family: 'HK Modular', 'Orbitron', sans-serif;
     position: relative;
@@ -100,7 +104,7 @@ body {
 
 .nav-pill a:hover {
     color: #ffffff;
-    text-shadow: 0 0 18px rgba(255, 255, 255, 1), 
+    text-shadow: 0 0 18px rgba(255, 255, 255, 1),
                  0 0 40px rgba(255, 255, 255, 0.8),
                  0 0 60px rgba(255, 255, 255, 0.4);
     letter-spacing: 2.5px;
@@ -118,7 +122,7 @@ body {
     padding: 0;
     color: #ffffff !important;
     font-weight: 800 !important;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
                  0 0 30px rgba(255, 255, 255, 0.5) !important;
     box-shadow: none;
     transition: all 0.35s ease !important;
@@ -141,7 +145,7 @@ body {
 .apply-btn:hover {
     background: transparent;
     box-shadow: none;
-    text-shadow: 0 0 18px rgba(255, 255, 255, 1), 
+    text-shadow: 0 0 18px rgba(255, 255, 255, 1),
                  0 0 40px rgba(255, 255, 255, 0.8),
                  0 0 60px rgba(255, 255, 255, 0.4) !important;
     letter-spacing: 2.5px !important;
@@ -186,11 +190,11 @@ body {
     .mlh img {
         width: 80px;
     }
-    
+
     .social-icons-top {
         gap: 20px;
     }
-    
+
     .social-icons-top img {
         width: 38px;
         height: 38px;
@@ -201,7 +205,7 @@ body {
     .nav-pill {
         gap: 15px;
     }
-    
+
     .nav-pill a {
         font-size: 11px;
         letter-spacing: 1px;
@@ -214,7 +218,70 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
+    padding-left: 8vw;
+    padding-top: 80px;
+    gap: 12px;
+}
+
+.hero-logo {
+    width: min(620px, 80vw);
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(255, 230, 0, 0.5))
+            drop-shadow(0 0 60px rgba(200, 60, 255, 0.3));
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    from {
+        filter: drop-shadow(0 0 20px rgba(255,230,0,0.4))
+                drop-shadow(0 0 40px rgba(200,60,255,0.2));
+    }
+    to {
+        filter: drop-shadow(0 0 45px rgba(255,230,0,0.8))
+                drop-shadow(0 0 80px rgba(200,60,255,0.5));
+    }
+}
+
+.hero-sub {
+    font-family: 'HK Modular', 'Orbitron', sans-serif;
+    font-size: clamp(14px, 2.5vw, 22px);
+    color: #ffffff;
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px rgba(255,255,255,0.6);
+    margin-top: 4px;
+}
+
+.hero-date {
+    font-family: 'HK Modular', 'Orbitron', sans-serif;
+    font-size: clamp(13px, 2vw, 18px);
+    color: #00f0ff;
+    letter-spacing: 5px;
+    text-shadow: 0 0 14px rgba(0,240,255,0.8);
+}
+
+.hero-tagline {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-size: clamp(12px, 1.5vw, 16px);
+    color: rgba(255, 230, 0, 0.75);
+    letter-spacing: 1px;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        align-items: center;
+        padding-left: 0;
+        text-align: center;
+    }
 }
 
 /* GLOW EFFECT */
@@ -318,7 +385,6 @@ button:hover {
     text-shadow: 0 0 10px rgba(255, 45, 120, 0.8);
 }
 
-
 /* ---------- TRACKS ---------- */
 .tracks {
     padding: 100px 40px;
@@ -414,11 +480,11 @@ button:hover {
     border: 1px solid rgba(57,255,20,0.04);
 }
 
-.sponsor-card img { 
-    max-width: 100%; 
-    height: 64px; 
-    object-fit: contain; 
-    display: block; 
+.sponsor-card img {
+    max-width: 100%;
+    height: 64px;
+    object-fit: contain;
+    display: block;
 }
 
 /* ---------- FAQ ---------- */
@@ -439,28 +505,28 @@ button:hover {
     z-index: 1;
 }
 
-.faq .section-title { 
-    text-align: center; 
-    margin-left: 0; 
-    margin-right: 0; 
-    margin-bottom: 40px; 
+.faq .section-title {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 40px;
 }
 
-.faq-list { 
-    display: grid; 
-    gap: 16px; 
-    width: 100%; 
-    max-width: 800px; 
-    margin: 0 auto; 
+.faq-list {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.faq-item { 
-    background: rgba(10,6,20,0.5); 
+.faq-item {
+    background: rgba(10,6,20,0.5);
     backdrop-filter: blur(5px);
-    border-radius: 12px; 
-    overflow: hidden; 
-    border: 1px solid rgba(57,255,20,0.1); 
-    width: 100%; 
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(57,255,20,0.1);
+    width: 100%;
     transition: border-color 0.3s;
 }
 
@@ -486,22 +552,22 @@ button:hover {
     font-size: 16px;
 }
 
-.faq-question::after { 
-    content: '+'; 
-    font-size: 24px; 
-    line-height: 1; 
-    opacity: 0.9; 
-    transition: transform 0.25s ease, opacity 0.2s ease; 
+.faq-question::after {
+    content: '+';
+    font-size: 24px;
+    line-height: 1;
+    opacity: 0.9;
+    transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
-.faq-item.open .faq-question::after { 
-    content: '\2212'; 
-    transform: rotate(0deg); 
-    opacity: 1; 
+.faq-item.open .faq-question::after {
+    content: '\2212';
+    transform: rotate(0deg);
+    opacity: 1;
 }
 
-.faq-question:focus { 
-    outline: 2px solid rgba(57,255,20,0.18); 
+.faq-question:focus {
+    outline: 2px solid rgba(57,255,20,0.18);
 }
 
 .faq-answer {
@@ -521,119 +587,119 @@ button:hover {
     padding: 0 24px 20px 24px;
 }
 
-.faq-question:hover { 
-    background: linear-gradient(90deg, rgba(57,255,20,0.05), rgba(0,240,255,0.05)); 
+.faq-question:hover {
+    background: linear-gradient(90deg, rgba(57,255,20,0.05), rgba(0,240,255,0.05));
 }
 
-.faq-question:focus { 
-    outline: none; 
-    box-shadow: 0 0 0 4px rgba(57,255,20,0.06); 
+.faq-question:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(57,255,20,0.06);
 }
 
-/* Responsive */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
     .about {
         padding: 60px 20px;
     }
-    
+
     .tracks {
         padding: 60px 20px;
     }
-    
+
     .sponsors {
         padding: 60px 20px;
     }
-    
+
     .faq {
         padding: 60px 20px;
     }
-    
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .tracks-row {
         flex-direction: column;
         gap: 20px;
     }
-    
+
     .track-num {
         font-size: 56px;
     }
-    
-    .sponsors-grid { 
-        grid-template-columns: repeat(2, 1fr); 
+
+    .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
-    .mlh { 
-        right: 16px; 
-        top: 6px; 
-    }
-    
-    .mlh img { 
-        height: 64px; 
+    .mlh {
+        right: 16px;
+        top: 6px;
     }
 
-    .about { 
-        padding: 40px 15px; 
+    .mlh img {
+        height: 64px;
     }
-    
-    .tracks { 
-        padding: 40px 15px; 
+
+    .about {
+        padding: 40px 15px;
     }
-    
-    .sponsors { 
-        padding: 40px 15px; 
+
+    .tracks {
+        padding: 40px 15px;
     }
-    
+
+    .sponsors {
+        padding: 40px 15px;
+    }
+
     .faq {
         padding: 40px 15px;
     }
 
-    .track-num { 
-        font-size: 44px; 
+    .track-num {
+        font-size: 44px;
     }
 
-    .nav-pill { 
-        padding: 6px 10px; 
-        gap: 8px; 
-        font-size: 12px; 
+    .nav-pill {
+        padding: 6px 10px;
+        gap: 8px;
+        font-size: 12px;
     }
 }
 
 @media (max-width: 420px) {
-    .track-num { 
-        font-size: 48px; 
+    .track-num {
+        font-size: 48px;
     }
-    
-    .section-title { 
-        font-size: 32px; 
+
+    .section-title {
+        font-size: 32px;
     }
-    
-    .faq-question { 
-        padding: 16px 18px; 
-        font-size: 14px; 
+
+    .faq-question {
+        padding: 16px 18px;
+        font-size: 14px;
     }
-    
-    .faq-answer { 
-        padding: 0 18px; 
-        font-size: 14px; 
+
+    .faq-answer {
+        padding: 0 18px;
+        font-size: 14px;
     }
-    
-    .faq-item.open .faq-answer { 
-        padding: 0 18px 16px 18px; 
+
+    .faq-item.open .faq-answer {
+        padding: 0 18px 16px 18px;
     }
-    
-    .sponsors-grid { 
-        grid-template-columns: 1fr; 
+
+    .sponsors-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 360px) {
-    .mlh img { 
-        height: 56px; 
+    .mlh img {
+        height: 56px;
     }
 }
