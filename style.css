@@ -260,7 +260,7 @@ body {
     letter-spacing: 4px;
     text-shadow: 0 0 12px rgba(255,255,255,0.6);
     position: absolute;
-    top: calc(50% + 20px);           /* just below where logo ends */
+    top: calc(50% + 50px);
     left: 8vw;
 }
 
@@ -272,7 +272,7 @@ body {
     letter-spacing: 5px;
     text-shadow: 0 0 14px rgba(196,77,255,0.8);
     position: absolute;
-    top: calc(50% + 55px);           /* below the subtitle */
+    top: calc(50% + 85px);
     left: 8vw;
 }
 
@@ -704,10 +704,6 @@ button:hover {
 }
 
 @media (max-width: 360px) {
-    .mlh img {
-        height: 56px;
-    }
-}
     .mlh img {
         height: 56px;
     }
