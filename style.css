@@ -227,18 +227,18 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding-left: 8vw;
-    padding-top: 60px;                /* offset for fixed top bar */
-    gap: 8px;
+    padding-top: 60px;
+    gap: 4px;                         /* tight spacing between all three items */
     height: 100%;
 }
 
 .hero-logo {
-    width: min(713px, 80vw);          /* 620 * 1.15 = 713px */
+    width: min(713px, 80vw);
     height: auto;
     filter: drop-shadow(0 0 30px rgba(255, 230, 0, 0.5))
             drop-shadow(0 0 60px rgba(200, 60, 255, 0.3));
     animation: logoGlow 3s ease-in-out infinite alternate;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 @keyframes logoGlow {
