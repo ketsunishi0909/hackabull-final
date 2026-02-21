@@ -18,10 +18,10 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('images/imagebackgroundhackabull.png');
-    background-size: 100% auto;           /* full width, natural height — scrolls with page */
+    background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
-    background-color: #0a0008;            /* fallback once image ends */
+    background-color: #0a0008;
     font-family: 'Inter', sans-serif;
     color: var(--muted-text);
     min-height: 100vh;
@@ -176,25 +176,21 @@ body {
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
 }
 
-/* Mobile */
+/* Mobile top bar */
 @media (max-width: 768px) {
     .top-bar {
         padding: 15px 20px;
     }
-
     .nav-pill {
         gap: 20px;
         font-size: 12px;
     }
-
     .mlh img {
         width: 80px;
     }
-
     .social-icons-top {
         gap: 20px;
     }
-
     .social-icons-top img {
         width: 38px;
         height: 38px;
@@ -205,7 +201,6 @@ body {
     .nav-pill {
         gap: 15px;
     }
-
     .nav-pill a {
         font-size: 11px;
         letter-spacing: 1px;
@@ -221,74 +216,6 @@ body {
     justify-content: flex-start;
 }
 
-.hero-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding-left: 8vw;
-    padding-top: 60px;
-}
-
-.hero-logo {
-    width: min(713px, 75vw);
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 8vw;
-    transform: translateY(-60%);      /* shift up so logo+text group is centered */
-    filter: drop-shadow(0 0 30px rgba(255, 230, 0, 0.5))
-            drop-shadow(0 0 60px rgba(200, 60, 255, 0.3));
-    animation: logoGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes logoGlow {
-    from {
-        filter: drop-shadow(0 0 20px rgba(255,230,0,0.4))
-                drop-shadow(0 0 40px rgba(200,60,255,0.2));
-    }
-    to {
-        filter: drop-shadow(0 0 45px rgba(255,230,0,0.8))
-                drop-shadow(0 0 80px rgba(200,60,255,0.5));
-    }
-}
-
-.hero-sub {
-    font-family: 'HK Modular', 'Orbitron', sans-serif;
-    font-size: clamp(14px, 2.2vw, 22px);
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 4px;
-    text-shadow: 0 0 12px rgba(255,255,255,0.6);
-    position: absolute;
-    top: calc(50% + 50px);
-    left: 8vw;
-}
-
-.hero-date {
-    font-family: 'HK Modular', 'Orbitron', sans-serif;
-    font-size: clamp(13px, 1.8vw, 18px);
-    font-weight: 700;
-    color: #c44dff;
-    letter-spacing: 5px;
-    text-shadow: 0 0 14px rgba(196,77,255,0.8);
-    position: absolute;
-    top: calc(50% + 85px);
-    left: 8vw;
-}
-
-@media (max-width: 768px) {
-    .hero-logo {
-        left: 50%;
-        transform: translate(-50%, -60%);
-    }
-    .hero-sub, .hero-date {
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        width: 100%;
-    }
-}
-
 /* GLOW EFFECT */
 .glow {
     text-shadow:
@@ -297,7 +224,7 @@ body {
         0 0 36px rgba(110,242,184,0.45);
 }
 
-/* BUTTON */
+/* BUTTON base */
 button {
     padding: 15px 40px;
     font-size: 16px;
@@ -397,54 +324,80 @@ button:hover {
     max-width: 100%;
     min-height: 100vh;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .tracks-inner {
     max-width: 1100px;
     margin: 0 auto;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
     position: relative;
     z-index: 1;
 }
 
-.tracks-row {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin-top: 40px;
+.tracks-left {
+    flex: 0 0 auto;
 }
 
-.track {
-    flex: 1 1 0;
-    min-width: 180px;
+.tracks-title {
+    font-family: 'HK Modular', 'Orbitron', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #ffffff;
+    padding-bottom: 8px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+.tracks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+    max-width: 600px;
+}
+
+.track-card {
     background: rgba(10,6,20,0.5);
     backdrop-filter: blur(5px);
-    padding: 40px 30px;
-    border-radius: 15px;
-    border: 1px solid rgba(0,240,255,0.15);
-    box-shadow: 0 8px 30px rgba(57,255,20,0.08), 0 0 18px rgba(0,240,255,0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.track:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(57,255,20,0.15), 0 0 25px rgba(0,240,255,0.1);
+.track-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.3);
+    box-shadow: 0 8px 30px rgba(255,255,255,0.08);
 }
 
-.track-num {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 72px;
-    color: var(--neon-cyan);
-    line-height: 1;
-    margin-bottom: 15px;
-    text-shadow: 0 0 12px rgba(0,240,255,0.3), 0 0 36px rgba(57,255,20,0.1);
+.track-card img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
 }
 
-.track-title {
+.track-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
     font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--muted-text);
-    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 0.5px;
 }
 
 /* ---------- SPONSORS ---------- */
@@ -603,34 +556,18 @@ button:hover {
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
-    .about {
-        padding: 60px 20px;
-    }
+    .about { padding: 60px 20px; }
+    .tracks { padding: 60px 20px; }
+    .sponsors { padding: 60px 20px; }
+    .faq { padding: 60px 20px; }
 
-    .tracks {
-        padding: 60px 20px;
-    }
-
-    .sponsors {
-        padding: 60px 20px;
-    }
-
-    .faq {
-        padding: 60px 20px;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .tracks-row {
+    .tracks-inner {
         flex-direction: column;
-        gap: 20px;
+        text-align: center;
     }
-
-    .track-num {
-        font-size: 56px;
+    .tracks-grid {
+        max-width: 100%;
+        width: 100%;
     }
 
     .sponsors-grid {
@@ -639,72 +576,23 @@ button:hover {
 }
 
 @media (max-width: 480px) {
-    .mlh {
-        right: 16px;
-        top: 6px;
-    }
-
-    .mlh img {
-        height: 64px;
-    }
-
-    .about {
-        padding: 40px 15px;
-    }
-
-    .tracks {
-        padding: 40px 15px;
-    }
-
-    .sponsors {
-        padding: 40px 15px;
-    }
-
-    .faq {
-        padding: 40px 15px;
-    }
-
-    .track-num {
-        font-size: 44px;
-    }
-
-    .nav-pill {
-        padding: 6px 10px;
-        gap: 8px;
-        font-size: 12px;
-    }
+    .mlh { right: 16px; top: 6px; }
+    .mlh img { height: 64px; }
+    .about { padding: 40px 15px; }
+    .tracks { padding: 40px 15px; }
+    .sponsors { padding: 40px 15px; }
+    .faq { padding: 40px 15px; }
+    .nav-pill { padding: 6px 10px; gap: 8px; font-size: 12px; }
 }
 
 @media (max-width: 420px) {
-    .track-num {
-        font-size: 48px;
-    }
-
-    .section-title {
-        font-size: 32px;
-    }
-
-    .faq-question {
-        padding: 16px 18px;
-        font-size: 14px;
-    }
-
-    .faq-answer {
-        padding: 0 18px;
-        font-size: 14px;
-    }
-
-    .faq-item.open .faq-answer {
-        padding: 0 18px 16px 18px;
-    }
-
-    .sponsors-grid {
-        grid-template-columns: 1fr;
-    }
+    .section-title { font-size: 32px; }
+    .faq-question { padding: 16px 18px; font-size: 14px; }
+    .faq-answer { padding: 0 18px; font-size: 14px; }
+    .faq-item.open .faq-answer { padding: 0 18px 16px 18px; }
+    .sponsors-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 360px) {
-    .mlh img {
-        height: 56px;
-    }
+    .mlh img { height: 56px; }
 }
