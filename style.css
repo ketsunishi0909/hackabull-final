@@ -573,7 +573,13 @@ button:hover {
     min-height: 100vh;
     position: relative;
 }
-
+.sponsors-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
 .sponsors-inner {
     max-width: 1100px;
     margin: 0 auto;
