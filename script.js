@@ -1,7 +1,6 @@
-// FAQ Accordion
 document.addEventListener('DOMContentLoaded', function() {
+    // FAQ Accordion
     const faqQuestions = document.querySelectorAll('.faq-question');
-    
     faqQuestions.forEach(question => {
         question.addEventListener('click', function() {
             const faqItem = this.parentElement;
@@ -22,35 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
         { title: "Hello world",    desc: "Perfect for beginners — build your first project and take your first steps into hacking." },
         { title: "Hardware",       desc: "Get hands-on with physical computing, circuits, and embedded systems to build real devices." },
     ];
-
     const carousel = document.getElementById('carousel');
     const titleEl  = document.getElementById('carousel-title');
     const descEl   = document.getElementById('carousel-desc');
     const items    = document.querySelectorAll('.carousel-item');
-
     let currentAngle = 0;
     let autoRotate = setInterval(() => {
         currentAngle -= 1;
         carousel.style.transform = `rotateY(${currentAngle}deg)`;
     }, 30);
-
-    // Set first item as active by default
     items[0].classList.add('active');
-
     items.forEach((item, i) => {
         item.addEventListener('click', () => {
-            // Clear auto rotation
             clearInterval(autoRotate);
-
-            // Snap to clicked item
             const targetAngle = -(i * 90);
-            // Find shortest path to target
-            const current = currentAngle % 360;
             currentAngle = targetAngle;
             carousel.style.transition = 'transform 0.6s ease';
             carousel.style.transform = `rotateY(${targetAngle}deg)`;
-
-            // Update info
             titleEl.style.opacity = '0';
             descEl.style.opacity = '0';
             setTimeout(() => {
@@ -59,12 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 titleEl.style.opacity = '1';
                 descEl.style.opacity = '1';
             }, 300);
-
-            // Highlight active
             items.forEach(el => el.classList.remove('active'));
             item.classList.add('active');
-
-            // Resume auto rotation after 3 seconds
             setTimeout(() => {
                 carousel.style.transition = '';
                 autoRotate = setInterval(() => {
@@ -74,4 +57,42 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         });
     });
-});
+
+    // Gallery Slideshow
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('slideDots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentSlide = 0;
+    let slideInterval;
+
+    slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        dotsContainer.children[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dotsContainer.children[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
+
+    nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+    prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+    function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 3500);
+    }
+
+    slideInterval = setInterval(nextSlide, 3500);
+
+}); // ← this is the closing of DOMContentLoaded
